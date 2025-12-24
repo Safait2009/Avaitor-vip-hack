@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AVIATOR VIP - SAFAIT</title>
+    <style>
+        :root { --p-color: #ff003c; --bg: #000; --text: #fff; }
+        body { background: var(--bg); color: var(--text); font-family: 'Arial', sans-serif; text-align: center; margin: 0; overflow: hidden; }
+        .vip-panel { border: 2px solid var(--p-color); border-radius: 25px; padding: 25px; background: #0a0a0a; max-width: 350px; margin: 40px auto; box-shadow: 0 0 40px rgba(255, 0, 60, 0.4); }
+        .logo { font-size: 24px; font-weight: 900; letter-spacing: 3px; color: var(--p-color); margin-bottom: 5px; }
+        #display { background: #111; border: 1px solid #222; border-radius: 15px; padding: 40px 10px; margin: 20px 0; position: relative; }
+        #multiplier { font-size: 65px; font-weight: 900; color: #fff; text-shadow: 0 0 20px var(--p-color); margin: 0; }
+        .loading-bar { width: 100%; height: 4px; background: #222; margin-top: 15px; border-radius: 10px; overflow: hidden; }
+        #progress { width: 0%; height: 100%; background: var(--p-color); transition: 0.1s; }
+        .hack-btn { background: var(--p-color); color: #fff; border: none; padding: 20px; width: 100%; border-radius: 12px; font-size: 20px; font-weight: bold; cursor: pointer; box-shadow: 0 6px 0 #80001e; }
+        .hack-btn:active { transform: translateY(4px); box-shadow: none; }
+        .status-text { font-size: 11px; color: #555; margin-top: 15px; text-transform: uppercase; }
+    </style>
+</head>
+<body>
+
+<div class="vip-panel">
+    <div class="logo">AVIATOR PRO</div>
+    <div style="font-size: 10px; color: #444;">ID: SAFAIT-2009-SPECIAL</div>
+
+    <div id="display">
+        <div id="loading-txt" style="font-size: 12px; color: #ffcc00;">AWAITING SIGNAL...</div>
+        <p id="multiplier">1.00x</p>
+        <div class="loading-bar"><div id="progress"></div></div>
+    </div>
+
+    <button class="hack-btn" onclick="getSignal()">GENERATE SIGNAL</button>
+
+    <div class="status-text" id="stat">SERVER: CLOUD_SYNC_READY</div>
+    <div style="font-size: 12px; color: #00ff00; margin-top: 10px; font-weight: bold;">TARGET: 1.50x CASH OUT</div>
+</div>
+
+<script>
+    function getSignal() {
+        const mul = document.getElementById('multiplier');
+        const prog = document.getElementById('progress');
+        const txt = document.getElementById('loading-txt');
+        const stat = document.getElementById('stat');
+
+        txt.innerText = "BYPASSING FIREWALL...";
+        stat.innerText = "INJECTING PACKETS...";
+        mul.innerText = "---";
+        prog.style.width = "0%";
+
+        let p = 0;
+        let interval = setInterval(() => {
+            p += 5;
+            prog.style.width = p + "%";
+            if(p >= 100) {
+                clearInterval(interval);
+                showResult();
+            }
+        }, 50);
+    }
+
+    function showResult() {
+        const mul = document.getElementById('multiplier');
+        const txt = document.getElementById('loading-txt');
+        const stat = document.getElementById('stat');
+        
+        let r = Math.random() * 100;
+        let finalVal;
+
+        // ৯/১০ বার উইন করানোর জন্য ১.৫০x এর ওপর লজিক
+        if (r < 85) { // ৮৫% সম্ভাবনা যে ১.৫০x এর ওপরে যাবে
+            finalVal = (1.55 + (Math.random() * 1.5)).toFixed(2);
+        } else {
+            finalVal = (1.10 + (Math.random() * 0.3)).toFixed(2);
+        }
+
+        mul.innerText = finalVal + "x";
+        txt.innerText = "SIGNAL SECURED!";
+        stat.innerText = "ENCRYPTION: AES-256 ACTIVE";
+        
+        if(parseFloat(finalVal) < 1.50) {
+            mul.style.color = "#ff003c";
+        } else {
+            mul.style.color = "#00ff00";
+        }
+    }
+</script>
+</body>
+</html>
