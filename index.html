@@ -1,89 +1,54 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AVIATOR VIP - SAFAIT</title>
-    <style>
-        :root { --p-color: #ff003c; --bg: #000; --text: #fff; }
-        body { background: var(--bg); color: var(--text); font-family: 'Arial', sans-serif; text-align: center; margin: 0; overflow: hidden; }
-        .vip-panel { border: 2px solid var(--p-color); border-radius: 25px; padding: 25px; background: #0a0a0a; max-width: 350px; margin: 40px auto; box-shadow: 0 0 40px rgba(255, 0, 60, 0.4); }
-        .logo { font-size: 24px; font-weight: 900; letter-spacing: 3px; color: var(--p-color); margin-bottom: 5px; }
-        #display { background: #111; border: 1px solid #222; border-radius: 15px; padding: 40px 10px; margin: 20px 0; position: relative; }
-        #multiplier { font-size: 65px; font-weight: 900; color: #fff; text-shadow: 0 0 20px var(--p-color); margin: 0; }
-        .loading-bar { width: 100%; height: 4px; background: #222; margin-top: 15px; border-radius: 10px; overflow: hidden; }
-        #progress { width: 0%; height: 100%; background: var(--p-color); transition: 0.1s; }
-        .hack-btn { background: var(--p-color); color: #fff; border: none; padding: 20px; width: 100%; border-radius: 12px; font-size: 20px; font-weight: bold; cursor: pointer; box-shadow: 0 6px 0 #80001e; }
-        .hack-btn:active { transform: translateY(4px); box-shadow: none; }
-        .status-text { font-size: 11px; color: #555; margin-top: 15px; text-transform: uppercase; }
-    </style>
-</head>
-<body>
+<div style="background: linear-gradient(180deg, #1a0033 0%, #000 100%); color: #ff0055; padding: 25px; border: 4px solid #ff0055; border-radius: 40px; max-width: 400px; margin: auto; font-family: 'Arial', sans-serif; text-align: center; box-shadow: 0 0 60px rgba(255, 0, 85, 0.4);">
+    
+    <div style="font-weight: bold; font-size: 22px; color: #fff; text-shadow: 0 0 15px #ff0055;">✈️ SAFAIT AVIATOR PRO ✈️</div>
+    <div style="color: #00ffcc; font-size: 12px; margin-top: 5px;">LIVE CRASH ANALYSIS | PASS: 2009</div>
+    <hr style="border: 0.5px solid #333; margin: 15px 0;">
 
-<div class="vip-panel">
-    <div class="logo">AVIATOR PRO</div>
-    <div style="font-size: 10px; color: #444;">ID: SAFAIT-2009-SPECIAL</div>
-
-    <div id="display">
-        <div id="loading-txt" style="font-size: 12px; color: #ffcc00;">AWAITING SIGNAL...</div>
-        <p id="multiplier">1.00x</p>
-        <div class="loading-bar"><div id="progress"></div></div>
+    <div id="status" style="font-size: 14px; color: #aaa;">SCANNING NEXT FLIGHT...</div>
+    
+    <div id="predictionBox" style="margin: 20px 0; padding: 30px; background: rgba(0,0,0,0.8); border: 3px solid #ff0055; border-radius: 30px; box-shadow: inset 0 0 20px rgba(255, 0, 85, 0.2);">
+        <div style="color: #aaa; font-size: 14px; margin-bottom: 10px;">AUTO-CASHOUT AT:</div>
+        <div id="outResult" style="font-size: 60px; font-weight: bold; color: #ff0055; text-shadow: 0 0 25px #ff0055;">1.50x</div>
+        <div id="signalType" style="color: #0f0; font-size: 16px; margin-top: 10px; font-weight: bold;">SAFE ZONE</div>
     </div>
 
-    <button class="hack-btn" onclick="getSignal()">GENERATE SIGNAL</button>
+    <button onclick="getNewSignal()" style="padding: 12px 30px; background: #ff0055; color: #fff; border: none; border-radius: 20px; font-weight: bold; cursor: pointer; box-shadow: 0 5px 15px rgba(255,0,85,0.4);">
+        🚀 GET NEXT SIGNAL
+    </button>
 
-    <div class="status-text" id="stat">SERVER: CLOUD_SYNC_READY</div>
-    <div style="font-size: 12px; color: #00ff00; margin-top: 10px; font-weight: bold;">TARGET: 1.50x CASH OUT</div>
+    <div style="margin-top: 20px; font-size: 12px; color: #ffcc00;">
+        ⚠️ ৩-স্টেপ রিকভারি ফলো করুন (১০-৩০-৯০)<br>১.৩০x এর বেশি লোভ করবেন না।
+    </div>
 </div>
 
 <script>
-    function getSignal() {
-        const mul = document.getElementById('multiplier');
-        const prog = document.getElementById('progress');
-        const txt = document.getElementById('loading-txt');
-        const stat = document.getElementById('stat');
+function getNewSignal() {
+    document.getElementById('status').innerText = "CALCULATING CRASH POINT...";
+    document.getElementById('outResult').innerText = "...";
+    
+    setTimeout(() => {
+        let rand = Math.random() * 100;
+        let result = "";
+        let type = "";
 
-        txt.innerText = "BYPASSING FIREWALL...";
-        stat.innerText = "INJECTING PACKETS...";
-        mul.innerText = "---";
-        prog.style.width = "0%";
-
-        let p = 0;
-        let interval = setInterval(() => {
-            p += 5;
-            prog.style.width = p + "%";
-            if(p >= 100) {
-                clearInterval(interval);
-                showResult();
-            }
-        }, 50);
-    }
-
-    function showResult() {
-        const mul = document.getElementById('multiplier');
-        const txt = document.getElementById('loading-txt');
-        const stat = document.getElementById('stat');
-        
-        let r = Math.random() * 100;
-        let finalVal;
-
-        // ৯/১০ বার উইন করানোর জন্য ১.৫০x এর ওপর লজিক
-        if (r < 85) { // ৮৫% সম্ভাবনা যে ১.৫০x এর ওপরে যাবে
-            finalVal = (1.55 + (Math.random() * 1.5)).toFixed(2);
+        // Safe Logic for Recovery
+        if (rand < 60) {
+            result = (1.20 + Math.random() * 0.30).toFixed(2) + "x";
+            type = "SAFE ZONE ✅";
+            document.getElementById('outResult').style.color = "#0f0";
+        } else if (rand < 90) {
+            result = (1.60 + Math.random() * 0.90).toFixed(2) + "x";
+            type = "MEDIUM RISK ⚠️";
+            document.getElementById('outResult').style.color = "#ffcc00";
         } else {
-            finalVal = (1.10 + (Math.random() * 0.3)).toFixed(2);
+            result = (2.50 + Math.random() * 3.00).toFixed(2) + "x";
+            type = "HIGH PROFIT 🔥";
+            document.getElementById('outResult').style.color = "#ff0055";
         }
 
-        mul.innerText = finalVal + "x";
-        txt.innerText = "SIGNAL SECURED!";
-        stat.innerText = "ENCRYPTION: AES-256 ACTIVE";
-        
-        if(parseFloat(finalVal) < 1.50) {
-            mul.style.color = "#ff003c";
-        } else {
-            mul.style.color = "#00ff00";
-        }
-    }
+        document.getElementById('outResult').innerText = result;
+        document.getElementById('signalType').innerText = type;
+        document.getElementById('status').innerText = "SIGNAL READY!";
+    }, 1500);
+}
 </script>
-</body>
-</html>
